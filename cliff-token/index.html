@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cliff Tokens: Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning">
+  <meta property="og:title" content="Cliff Tokens">
+  <meta property="og:description" content="Identifying single-token failure triggers in LLM mathematical reasoning.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./static/images/main_figure.png">
+  <title>Cliff Tokens</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <p class="venue">arXiv 2026</p>
+      <h1>Cliff Tokens</h1>
+      <p class="subtitle">Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning</p>
+      <p class="authors">
+        <a href="https://jaeyongko.github.io/">Jaeyong Ko</a><sup>1</sup>,
+        Pilsung Kang<sup>1</sup>,
+        <a href="https://yukyunglee.com/">Yukyung Lee</a><sup>2,&dagger;</sup>
+      </p>
+      <p class="affiliation"><sup>1</sup>Seoul National University &nbsp;&nbsp; <sup>2</sup>Boston University</p>
+      <p class="corresponding"><sup>&dagger;</sup>Corresponding author</p>
+      <nav class="button-row" aria-label="Project links">
+        <a class="button" href="./static/pdf/cliff_tokens.pdf">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v16H6V2zm7 1.8V7h3.2L13 3.8zM8 11h8v1.7H8V11zm0 3.5h8v1.7H8v-1.7zm0 3.5h5v1.7H8V18z"/></svg>
+          <span>Paper</span>
+        </a>
+        <a class="button" href="https://arxiv.org/abs/2606.25524">
+          <span class="icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
+          <span>arXiv</span>
+        </a>
+        <a class="button" href="https://github.com/beaver-22/Cliff-token">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9C5.9.9 1 5.8 1 11.9c0 4.9 3.2 9 7.6 10.4.6.1.8-.2.8-.6v-2.1c-3.1.7-3.7-1.3-3.7-1.3-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.6 2 3 1.4.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 1.1.9-.2 1.8-.4 2.8-.4s1.9.1 2.8.4c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.4-1.5 7.6-5.6 7.6-10.5C23 5.8 18.1.9 12 .9z"/></svg>
+          <span>Code</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="page-nav" aria-label="Section navigation">
+    <div class="container page-nav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#definition">Definition</a>
+      <a href="#rq1">RQ1</a>
+      <a href="#rq2">RQ2</a>
+      <a href="#rq3">RQ3</a>
+      <a href="#cliff-dpo">Cliff-DPO</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section teaser-section">
+      <div class="container">
+        <figure class="figure-panel">
+          <img src="./static/images/main_figure.png" alt="Cliff token identification overview">
+          <figcaption>
+            <strong>Overview of cliff tokens.</strong> A reasoning trace can remain recoverable until a single token causes token-wise potential to collapse. Cliff tokens identify the token-level point where the trace shifts toward failure.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section overview-section" id="overview">
+      <div class="container narrow">
+        <h2>Overview</h2>
+        <p>
+          Existing analyses often localize failure after a reasoning trace has already deteriorated. Cliff tokens target the preceding transition point: <strong>the token at which the trace begins to shift toward failure.</strong>
+        </p>
+        <div class="overview-list">
+          <p><strong>Detect.</strong> Estimate token-wise potential at each position and identify statistically significant drops.</p>
+          <p><strong>Analyze.</strong> Characterize cliff tokens by entropy, greediness, and cross-scale transfer.</p>
+          <p><strong>Intervene.</strong> Evaluate deletion-based recovery and use cliff positions as single-token preference signals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="definition">
+      <div class="container narrow">
+        <h2>What Is a Cliff Token?</h2>
+        <p>
+          <strong>Token-wise potential</strong> is the probability that a reasoning process reaches the correct answer, conditioned on the partial trace generated up to a token position. Empirically, we estimate it by rolling out continuations from each prefix and measuring the success rate.
+        </p>
+        <p>
+          A <strong>cliff token</strong> is a token where token-wise potential drops significantly from the previous prefix. Before this token, the trace may remain recoverable; after the token is fixed, continuations are more likely to end in failure.
+        </p>
+        <p>
+          To distinguish statistically significant shifts from rollout noise, the detection criterion uses an <strong>adaptive threshold based on a one-sided two-proportion z-test</strong>. We use <strong>N = 64 rollouts per token position</strong>, extending potential-based analysis from coarse trace segments to token-level resolution.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="rq1">
+      <div class="container">
+        <div class="section-heading">
+          <h2>RQ1: Do Cliff Tokens Trigger Reasoning Failures?</h2>
+          <p>
+            <strong>Cliff tokens occur more often in incorrect traces, and deleting the first cliff token can restore reasoning.</strong> Across seven instruction-tuned models on GSM1K, MATH500, and AIME 2025, incorrect traces are more likely to contain cliff tokens and have higher average cliff-token counts in most model settings.
+          </p>
+        </div>
+        <figure class="figure-panel">
+          <img src="./static/images/fig02_03_cliff_stats_combined.png" alt="Cliff token occurrence statistics across models">
+          <figcaption>
+            <strong>Cliff-token occurrence.</strong> Proportion of traces containing at least one cliff token and average cliff-token counts per trace, aggregated across the three mathematical reasoning benchmarks.
+          </figcaption>
+        </figure>
+        <figure class="figure-panel">
+          <img src="./static/images/fig16_passk_incorrect.png" alt="Pass@k comparison between Cliff-del and Cliff-keep on incorrect traces">
+          <figcaption>
+            <strong>Cliff-del vs. Cliff-keep.</strong> <strong>Cliff-del reaches pass@64 = 1.0</strong> across evaluated panels, while Cliff-keep remains between <strong>0.71 and 1.00</strong> in panels with cliff tokens. The gap indicates that the first cliff token acts as a failure trigger.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section tinted" id="rq2">
+      <div class="container">
+        <div class="section-heading">
+          <h2>RQ2: What Probabilistic Patterns Characterize Cliff Tokens?</h2>
+          <p>
+            <strong>Cliff tokens exhibit distinct probabilistic structure.</strong> Token entropy and token greediness separate them into three failure modes: confident bias, competitive uncertainty, and stochastic sampling noise.
+          </p>
+        </div>
+        <div class="taxonomy-grid">
+          <article>
+            <h3>Deterministic cliff</h3>
+            <p>A greedy token with low entropy. The model samples the cliff token with <strong>near-absolute certainty</strong>.</p>
+          </article>
+          <article>
+            <h3>Uncertain cliff</h3>
+            <p>A greedy token with high entropy. The greedy cliff token is sampled despite <strong>high uncertainty</strong>.</p>
+          </article>
+          <article>
+            <h3>Sampled-off cliff</h3>
+            <p>A non-greedy token with high entropy. The non-greedy cliff token is sampled <strong>stochastically</strong>.</p>
+          </article>
+        </div>
+        <figure class="figure-panel table-panel">
+          <div class="image-scroll">
+            <img src="./static/images/cliff_taxonomy.png" alt="Distribution and enrichment table for deterministic, uncertain, and sampled-off cliffs">
+          </div>
+          <figcaption>
+            <strong>Distribution and enrichment analysis of the cliff taxonomy.</strong> <strong>Sampled-off cliffs are strongly enriched</strong> across all seven evaluated models, while deterministic cliffs are less frequent than their baseline token occurrence.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="rq3">
+      <div class="container">
+        <div class="section-heading">
+          <h2>RQ3: How Does the Cliff Taxonomy Vary Across Families and Scales?</h2>
+          <p>
+            <strong>The cliff taxonomy changes with model family and scale.</strong> Deterministic cliffs are largely scale-invariant, while uncertain cliffs reflect model-specific gaps and sampled-off cliffs show scale-asymmetry.
+          </p>
+        </div>
+        <figure class="figure-panel">
+          <img src="./static/images/fig11_dcpm_violin_qwen3.png" alt="Cross-scale transfer of cliff probability mass between Qwen3-0.6B and Qwen3-8B">
+          <figcaption>
+            <strong>Cross-scale transfer of cliff probability mass.</strong> Deterministic cliffs stay near zero shift across Qwen3-0.6B and Qwen3-8B, uncertain cliffs lose probability mass in both directions, and sampled-off cliffs show an asymmetric shift across scale directions.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section tinted" id="cliff-dpo">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Cliff-DPO</h2>
+          <p>
+            <strong>Cliff positions can also provide targeted supervision.</strong> Cliff-DPO applies preference optimization at the token position where the reasoning trace diverges into failure.
+          </p>
+        </div>
+        <figure class="figure-panel table-panel">
+          <div class="image-scroll">
+            <img src="./static/images/cliff_dpo.png" alt="Cliff-DPO result table">
+          </div>
+          <figcaption>
+            <strong>Cliff-DPO results.</strong> Training on <strong>uncertain + sampled-off cliffs</strong> gives the strongest Cliff-DPO variant, matching or exceeding cDPO while using approximately <strong>177x fewer loss-contributing token positions</strong>.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="citation">
+      <div class="container narrow">
+        <h2>Citation</h2>
+        <pre><code>@article{ko2026clifftoken,
+  title={Cliff Tokens: Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning},
+  author={Ko, Jaeyong and Kang, Pilsung and Lee, Yukyung},
+  journal={arXiv preprint arXiv:2606.25524},
+  year={2026},
+  eprint={2606.25524},
+  archivePrefix={arXiv}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">
+      <p>
+        This website is based on the <a href="https://nerfies.github.io/">Nerfies project page</a> and is licensed under a
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
