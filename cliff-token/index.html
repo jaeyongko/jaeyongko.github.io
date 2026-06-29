@@ -60,7 +60,7 @@
         <figure class="figure-panel">
           <img src="./static/images/main_figure.png" alt="Cliff token identification overview">
           <figcaption>
-            <strong>Overview of cliff tokens.</strong> A reasoning trace can remain recoverable until a single token causes token-wise potential to collapse. Cliff tokens identify the token-level point where the trace shifts toward failure.
+            <strong>Overview of cliff tokens.</strong> A reasoning trace can remain recoverable until a single token causes token-wise potential collapse. Cliff tokens identify the token where the trace shifts toward failure.
           </figcaption>
         </figure>
       </div>
@@ -70,12 +70,12 @@
       <div class="container narrow">
         <h2>Overview</h2>
         <p>
-          Existing analyses often localize failure after a reasoning trace has already deteriorated. Cliff tokens target the preceding transition point: <strong>the token at which the trace begins to shift toward failure.</strong>
+          Existing analyses often localize failure after it has already emerged in a reasoning trace. Cliff tokens target the preceding failure trigger token: <strong>the token at which the trace begins to shift toward failure.</strong>
         </p>
         <div class="overview-list">
           <p><strong>Detect.</strong> Estimate token-wise potential at each position and identify statistically significant drops.</p>
-          <p><strong>Analyze.</strong> Characterize cliff tokens by entropy, greediness, and cross-scale transfer.</p>
-          <p><strong>Intervene.</strong> Evaluate deletion-based recovery and use cliff positions as single-token preference signals.</p>
+          <p><strong>Analyze.</strong> Characterize cliff tokens by entropy and greediness.</p>
+          <p><strong>Intervene.</strong> Train models with Cliff-DPO post-training using cliff tokens as token-level preference signals.</p>
         </div>
       </div>
     </section>
