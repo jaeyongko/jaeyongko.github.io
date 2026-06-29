@@ -73,9 +73,9 @@
           Existing analyses often localize failure after it has already emerged in a reasoning trace. Cliff tokens target the preceding failure trigger token: <strong>the token at which the trace begins to shift toward failure.</strong>
         </p>
         <div class="overview-list">
-          <p><strong>Detect.</strong> Estimate token-wise potential at each position and identify statistically significant drops.</p>
-          <p><strong>Analyze.</strong> Characterize cliff tokens by entropy and greediness.</p>
-          <p><strong>Intervene.</strong> Train models with Cliff-DPO post-training using cliff tokens as token-level preference signals.</p>
+          <p><strong>Formalize.</strong> We formalize cliff tokens with a z-test-based adaptive threshold that separates statistically significant reasoning failures from sampling noise, showing that these tokens act as failure triggers.</p>
+          <p><strong>Taxonomize.</strong> We introduce a cliff taxonomy of deterministic, uncertain, and sampled-off cliffs, demonstrating that each category has distinct probabilistic characteristics.</p>
+          <p><strong>Supervise.</strong> We validate single-token supervision at cliff positions through Cliff-DPO post-training to improve reasoning performance, with effectiveness varying across cliff types.</p>
         </div>
       </div>
     </section>
