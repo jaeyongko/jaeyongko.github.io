@@ -44,8 +44,8 @@
 
   <nav class="page-nav" aria-label="Section navigation">
     <div class="container page-nav-inner">
-      <a href="#overview">Overview</a>
       <a href="#definition">Definition</a>
+      <a href="#overview">Overview</a>
       <a href="#rq1">RQ1</a>
       <a href="#rq2">RQ2</a>
       <a href="#rq3">RQ3</a>
@@ -55,14 +55,28 @@
   </nav>
 
   <main>
-    <section class="section teaser-section">
-      <div class="container">
-        <figure class="figure-panel">
-          <img src="./static/images/main_figure.png" alt="Cliff token identification overview">
-          <figcaption>
-            <strong>Overview of cliff tokens.</strong> A reasoning trace can remain recoverable until a single token causes token-wise potential collapse. Cliff tokens identify the token where the trace shifts toward failure.
-          </figcaption>
-        </figure>
+    <section class="section teaser-section" id="definition">
+      <div class="container definition-layout">
+        <div class="definition-copy">
+          <h2>What Is a Cliff Token?</h2>
+          <p>
+            <strong>Token-wise potential</strong> is the probability that a reasoning process reaches the correct answer, conditioned on the partial trace generated up to a token position. Empirically, we estimate it by rolling out continuations from each prefix and measuring the success rate.
+          </p>
+          <p>
+            A <strong>cliff token</strong> is a token where token-wise potential drops significantly from the previous prefix. Before this token, the trace may remain recoverable; after the token is fixed, continuations are more likely to end in failure.
+          </p>
+          <p>
+            To distinguish statistically significant shifts from rollout noise, the detection criterion uses an <strong>adaptive threshold based on a one-sided two-proportion z-test</strong>. We use <strong>N = 64 rollouts per token position</strong>, extending potential-based analysis from coarse trace segments to token-level resolution.
+          </p>
+        </div>
+        <div class="definition-figure">
+          <figure class="figure-panel">
+            <img src="./static/images/main_figure.png" alt="Cliff token identification overview">
+            <figcaption>
+              <strong>Overview of cliff tokens.</strong> A reasoning trace can remain recoverable until a single token causes token-wise potential collapse. Cliff tokens identify the token where the trace shifts toward failure.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -72,26 +86,11 @@
         <p>
           Existing analyses often localize failure after it has already emerged in a reasoning trace. Cliff tokens target the preceding failure trigger token: <strong>the token at which the trace begins to shift toward failure.</strong>
         </p>
-        <div class="overview-list">
-          <p><strong>Formalize.</strong> We formalize cliff tokens with a z-test-based adaptive threshold that separates statistically significant reasoning failures from sampling noise, showing that these tokens act as failure triggers.</p>
-          <p><strong>Taxonomize.</strong> We introduce a cliff taxonomy of deterministic, uncertain, and sampled-off cliffs, demonstrating that each category has distinct probabilistic characteristics.</p>
-          <p><strong>Supervise.</strong> We validate single-token supervision at cliff positions through Cliff-DPO post-training to improve reasoning performance, with effectiveness varying across cliff types.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section tinted" id="definition">
-      <div class="container narrow">
-        <h2>What Is a Cliff Token?</h2>
-        <p>
-          <strong>Token-wise potential</strong> is the probability that a reasoning process reaches the correct answer, conditioned on the partial trace generated up to a token position. Empirically, we estimate it by rolling out continuations from each prefix and measuring the success rate.
-        </p>
-        <p>
-          A <strong>cliff token</strong> is a token where token-wise potential drops significantly from the previous prefix. Before this token, the trace may remain recoverable; after the token is fixed, continuations are more likely to end in failure.
-        </p>
-        <p>
-          To distinguish statistically significant shifts from rollout noise, the detection criterion uses an <strong>adaptive threshold based on a one-sided two-proportion z-test</strong>. We use <strong>N = 64 rollouts per token position</strong>, extending potential-based analysis from coarse trace segments to token-level resolution.
-        </p>
+        <ol class="overview-list">
+          <li>We formalize cliff tokens with a z-test-based adaptive threshold that separates statistically significant reasoning failures from sampling noise, showing that these tokens act as failure triggers.</li>
+          <li>We introduce a cliff taxonomy of deterministic, uncertain, and sampled-off cliffs, demonstrating that each category has distinct probabilistic characteristics.</li>
+          <li>We validate single-token supervision at cliff positions through Cliff-DPO post-training to improve reasoning performance, with effectiveness varying across cliff types.</li>
+        </ol>
       </div>
     </section>
 

@@ -213,6 +213,21 @@ h1 {
   padding-bottom: 38px;
 }
 
+.definition-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  align-items: center;
+  gap: 36px;
+}
+
+.definition-copy p {
+  color: #34373b;
+}
+
+.definition-copy p:last-child {
+  margin-bottom: 0;
+}
+
 .overview-section {
   padding-top: 38px;
 }
@@ -243,26 +258,52 @@ h3 {
 
 .overview-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 24px;
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: overview;
 }
 
-.overview-list p {
+.overview-list li {
+  position: relative;
   margin: 0;
-  padding-top: 14px;
+  padding: 14px 0 0 46px;
   border-top: 3px solid #d7dee8;
   color: #3f4348;
   font-size: 18px;
   line-height: 1.55;
+  counter-increment: overview;
+}
+
+.overview-list li::before {
+  content: counter(overview);
+  position: absolute;
+  top: 13px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #2f3136;
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .figure-panel {
-  margin: 0;
+  width: min(980px, 100%);
+  margin: 0 auto;
 }
 
 .figure-panel + .figure-panel {
   margin-top: 34px;
+}
+
+.definition-figure .figure-panel {
+  width: 100%;
 }
 
 .figure-panel img {
@@ -289,6 +330,8 @@ h3 {
 }
 
 .image-scroll {
+  width: min(980px, 100%);
+  margin: 0 auto;
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -297,7 +340,7 @@ h3 {
 
 .table-panel img {
   width: 100%;
-  min-width: 920px;
+  min-width: 820px;
   border: 0;
   border-radius: 0;
 }
@@ -413,15 +456,20 @@ code {
     height: 16px;
   }
 
+  .definition-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .definition-figure {
+    order: -1;
+  }
+
   .table-panel img {
-    min-width: 760px;
+    min-width: 680px;
   }
 
   .taxonomy-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .overview-list {
     grid-template-columns: 1fr;
   }
 
