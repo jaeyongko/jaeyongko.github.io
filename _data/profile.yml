@@ -104,6 +104,12 @@ teaching:
   position: "Course: Human Factors Engineering (406.304)"
   date: Sep. 2023 - Dec. 2023
 
+awards:
+- name: Excellence Award (Poster Presentation)
+  logo: /assets/images/badges/KDMS.png
+  organization: 2026 KDMS Summer Conference, Korea Data Mining Society
+  date: Aug. 2026
+
 skills:
 - name: Programming and Software
   detail: Python, R, MySQL, Docker, Git, vLLM, LaTeX
