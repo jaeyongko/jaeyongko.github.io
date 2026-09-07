@@ -1,5 +1,5 @@
 {% assign item = include.item %}
-<article class="p-3 text-left {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray">
+<article class="publication-page-item p-3 text-left {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray">
     {%- if item.cover -%}
     <img data-src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="lazy publication-page-cover rounded-sm" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
     {%- else -%}

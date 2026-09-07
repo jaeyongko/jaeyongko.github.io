@@ -72,13 +72,16 @@ h1, h2, h3, h4, h5, h6,
     vertical-align: -20%;
 }
 
+.publication-page-item {
+    overflow: hidden;
+}
+
 .publication-page-cover {
     display: block;
-    width: auto;
+    width: 100%;
     max-width: 100%;
-    max-height: 460px;
-    object-fit: contain;
-    object-position: left center;
+    height: auto;
+    box-sizing: border-box;
 }
 
 .abstract-links a + a {
