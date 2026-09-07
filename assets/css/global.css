@@ -78,10 +78,13 @@ h1, h2, h3, h4, h5, h6,
 
 .publication-page-cover {
     display: block;
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: min(100%, 700px);
+    max-height: 350px;
     height: auto;
     box-sizing: border-box;
+    object-fit: contain;
+    object-position: left center;
 }
 
 .abstract-links a + a {
