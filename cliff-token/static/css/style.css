@@ -303,7 +303,7 @@ h3 {
 }
 
 .figure-context {
-  width: min(920px, 100%);
+  width: min(var(--figure-width), 100%);
   margin: 34px auto 24px;
   color: #34373b;
 }
@@ -346,41 +346,9 @@ h3 {
 
 .table-panel img {
   width: 100%;
-  min-width: 100%;
+  min-width: 780px;
   border: 0;
   border-radius: 0;
-}
-
-.results-table {
-  width: 100%;
-  min-width: 720px;
-  border-collapse: collapse;
-  font-size: 15px;
-  line-height: 1.4;
-  font-variant-numeric: tabular-nums;
-}
-
-.results-table th,
-.results-table td {
-  padding: 9px 10px;
-  border-bottom: 1px solid var(--line);
-  text-align: right;
-}
-
-.results-table thead th {
-  background: #eef2f7;
-  color: var(--ink);
-  font-weight: 700;
-}
-
-.results-table tbody th,
-.results-table thead tr:first-child th:first-child {
-  text-align: left;
-  white-space: nowrap;
-}
-
-.results-table tbody tr:nth-child(even) {
-  background: #f8f9fb;
 }
 
 .formula {

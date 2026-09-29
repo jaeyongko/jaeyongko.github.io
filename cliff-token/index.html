@@ -105,7 +105,7 @@
             <strong>Figure 2: Average cliff tokens per trace.</strong> Correct and incorrect traces are compared across GSM1K, MATH500, and AIME 2025.
           </figcaption>
         </figure>
-        <p class="figure-context">To test whether a cliff token triggers failure, we resample new continuations immediately before (<strong>Cliff-del</strong>) and after (<strong>Cliff-keep</strong>) the first cliff token in each incorrect trace containing one.</p>
+        <p class="figure-context">Resampling before the first cliff token (<strong>Cliff-del</strong>) generally yields higher pass@k than resampling after it (<strong>Cliff-keep</strong>) at the same sample count, suggesting that cliff tokens trigger reasoning failures.</p>
         <figure class="figure-panel wide-figure">
           <div class="image-scroll">
             <img src="./static/images/fig16_passk_incorrect.png" alt="Cliff-del and Cliff-keep pass at k on incorrect traces across three benchmarks and seven models" loading="lazy">
@@ -122,7 +122,7 @@
         <div class="section-heading">
           <h2>Recovery and Self-Correction</h2>
           <p>
-            Cliff tokens capture local shifts toward failure that are not necessarily irreversible. Among 358 traces containing at least one cliff token, 47.2% contain multiple cliff tokens and 32.4% still reach the correct answer.
+            A cliff token does not necessarily mark an irreversible failure or coincide with the actual error token. In Figure 4, success probability recovers after the model writes “But wait” and corrects its arithmetic. Neither of the two cliff tokens coincides with the miscomputed value 443, where the arithmetic error occurs.
           </p>
         </div>
         <figure class="figure-panel">
@@ -139,7 +139,7 @@
         <div class="section-heading">
           <h2>Cliff Taxonomy</h2>
           <p>
-            We characterize cliff tokens by whether the sampled token is the greedy choice and by the entropy of the next-token distribution. The near-deterministic cutoff is the binary entropy of a greedy-token probability of 0.99, approximately <strong>0.0561 nats</strong>.
+            We characterize cliff tokens by greedy choice and token entropy. Their distribution varies by model family and scale: as Qwen3 and Llama-3 models grow, sampled-off cliffs become less common and deterministic cliffs more common. Qwen3-8B also produces more deterministic cliffs than the similarly sized Llama-3.1-8B.
           </p>
         </div>
         <div class="taxonomy-grid">
@@ -158,24 +158,10 @@
         </div>
         <figure class="figure-panel table-panel">
           <div class="image-scroll">
-            <table class="results-table">
-              <thead>
-                <tr><th scope="col" rowspan="2">Model</th><th scope="colgroup" colspan="3">Cliff proportion (%)</th><th scope="colgroup" colspan="3">All-token proportion (%)</th></tr>
-                <tr><th scope="col">D</th><th scope="col">U</th><th scope="col">S</th><th scope="col">D</th><th scope="col">U</th><th scope="col">S</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Qwen3-8B</th><td>47.9</td><td>34.4</td><td>17.7</td><td>69.1</td><td>27.8</td><td>3.1</td></tr>
-                <tr><th scope="row">Qwen3-4B</th><td>44.4</td><td>36.1</td><td>19.4</td><td>73.9</td><td>23.6</td><td>2.5</td></tr>
-                <tr><th scope="row">Qwen3-0.6B</th><td>29.8</td><td>41.9</td><td>28.2</td><td>64.3</td><td>32.2</td><td>3.5</td></tr>
-                <tr><th scope="row">Llama-3.1-8B</th><td>22.0</td><td>25.2</td><td>52.8</td><td>66.8</td><td>28.3</td><td>4.8</td></tr>
-                <tr><th scope="row">Llama-3.2-3B</th><td>16.8</td><td>25.3</td><td>54.7</td><td>73.5</td><td>22.4</td><td>4.0</td></tr>
-                <tr><th scope="row">Llama-3.2-1B</th><td>9.0</td><td>28.8</td><td>62.2</td><td>74.3</td><td>22.0</td><td>3.6</td></tr>
-                <tr><th scope="row">Gemma-3-4B</th><td>45.2</td><td>29.8</td><td>21.4</td><td>77.6</td><td>19.7</td><td>2.7</td></tr>
-              </tbody>
-            </table>
+            <img src="./static/images/cliff_taxonomy_table.png" alt="Paper Table 1: model-wise deterministic, uncertain, and sampled-off cliff proportions alongside all-token proportions, with the original grayscale shading" loading="lazy">
           </div>
           <figcaption>
-            <strong>Table 1: Distribution of cliff types.</strong> D, U, and S denote deterministic, uncertain, and sampled-off cliffs. Sampled-off cliffs form a larger share of cliff tokens than of all trace tokens across the seven models; the proportions also vary by model family and scale.
+            <strong>Table 1: Distribution of cliff types: deterministic (D), uncertain (U), and sampled-off (S).</strong> Cliff and all-token proportions give each type’s percentage among identified cliff tokens and all reasoning-trace tokens, respectively. Darker shading indicates larger values.
           </figcaption>
         </figure>
       </div>

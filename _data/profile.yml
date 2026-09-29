@@ -26,10 +26,12 @@ short_bio: >-
     <a href="https://dsba.snu.ac.kr/" target="_blank">Data Science &amp; Business Analytics Lab</a>.
   </p>
   <p>
-    My research interests are in large language models, with a focus on
-    mathematical reasoning, latent reasoning, and evaluation in the financial
-    domain. I am currently interested in latent reasoning in vision-language
-    models, especially how models reason beyond text-token reasoning traces.
+    My research focuses on reasoning in LLMs, VLMs, and unified models.
+    Previously, I worked on LLM mathematical reasoning and financial-domain
+    benchmarks. I am currently exploring visual latent reasoning, with the goal
+    of bringing visual thinking from a unified model's generation branch into
+    its understanding branch. Ultimately, I aim to develop unified reasoning
+    models that surpass the combined capabilities of separate, specialized models.
   </p>
 
 education:
