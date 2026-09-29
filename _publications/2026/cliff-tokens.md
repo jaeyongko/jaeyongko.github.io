@@ -1,5 +1,5 @@
 ---
-title: "Cliff Tokens: Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning"
+title: "Cliff Tokens: Analyzing Failure Trigger Tokens in LLM Mathematical Reasoning"
 date: 2026-06-25 00:00:00 +0900
 selected: true
 pub: "arXiv preprint arXiv:2606.25524"
@@ -11,6 +11,7 @@ abstract: >-
   reasoning reliability.
 authors:
   - Jaeyong Ko
+  - Jinu Lee
   - Pilsung Kang
   - Yukyung Lee
 links:
