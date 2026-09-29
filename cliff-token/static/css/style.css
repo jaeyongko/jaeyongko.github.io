@@ -284,16 +284,12 @@ h3 {
   margin: 0 auto;
 }
 
-.wide-figure {
-  width: min(1160px, 100%);
-}
-
 .wide-figure .image-scroll {
   width: 100%;
 }
 
 .wide-figure .image-scroll img {
-  min-width: 960px;
+  min-width: calc(var(--figure-width) - 2px);
   border: 0;
   border-radius: 0;
 }

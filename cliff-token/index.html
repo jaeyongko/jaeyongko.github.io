@@ -128,7 +128,7 @@
         <figure class="figure-panel">
           <img src="./static/images/self-correction.png" alt="A Qwen3-4B reasoning trace with two cliff tokens that later self-corrects" loading="lazy">
           <figcaption>
-            <strong>Figure 4: Recovery after cliff tokens.</strong> In a correct Qwen3-4B trace, success probability drops at two cliff tokens, then rises after the model writes “But wait” and corrects its arithmetic. Neither cliff token coincides with the arithmetic error itself.
+            <strong>Figure 4: Recovery after cliff tokens.</strong> Qwen3-4B on AIME 2025 Problem 1.
           </figcaption>
         </figure>
       </div>
@@ -139,7 +139,7 @@
         <div class="section-heading">
           <h2>Cliff Taxonomy</h2>
           <p>
-            We characterize cliff tokens by greedy choice and token entropy. Their distribution varies by model family and scale: as Qwen3 and Llama-3 models grow, sampled-off cliffs become less common and deterministic cliffs more common. Qwen3-8B also produces more deterministic cliffs than the similarly sized Llama-3.1-8B.
+            We characterize cliff tokens by greedy choice and token entropy. Their distribution varies by model family and scale: as model scale increases within the Qwen3 and Llama-3 families, sampled-off cliffs become less common and deterministic cliffs more common. Qwen3-8B also produces more deterministic cliffs than the similarly sized Llama-3.1-8B.
           </p>
         </div>
         <div class="taxonomy-grid">
