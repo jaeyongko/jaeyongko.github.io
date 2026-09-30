@@ -78,21 +78,19 @@ p {
 }
 
 h1 {
-  margin-bottom: 8px;
-  color: #303134;
-  font-family: inherit;
-  font-size: var(--hero-title-size);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.subtitle {
   width: min(920px, 100%);
   margin: 0 auto 18px;
   color: #303134;
+  font-family: inherit;
   font-size: var(--hero-title-size);
   font-weight: 500;
   line-height: 1.2;
+}
+
+.title-lead {
+  font-size: 1.1em;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .authors {
