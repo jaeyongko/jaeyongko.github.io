@@ -8,6 +8,7 @@
   --accent-dark: #1558b0;
   --warm: #b4441c;
   --figure-width: 880px;
+  --hero-title-size: clamp(26px, 3.3vw, 40px);
 }
 
 * {
@@ -78,17 +79,18 @@ p {
 
 h1 {
   margin-bottom: 8px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(48px, 7.6vw, 92px);
+  color: #303134;
+  font-family: inherit;
+  font-size: var(--hero-title-size);
   font-weight: 700;
-  line-height: 1.02;
+  line-height: 1.2;
 }
 
 .subtitle {
   width: min(920px, 100%);
   margin: 0 auto 18px;
   color: #303134;
-  font-size: clamp(26px, 3.3vw, 40px);
+  font-size: var(--hero-title-size);
   font-weight: 500;
   line-height: 1.2;
 }
