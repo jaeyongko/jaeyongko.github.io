@@ -2,7 +2,8 @@
 title: "FinLifeBench: Exhaustive Life-Event History and Financial-State Reconstruction from Longitudinal Banking Dialogue"
 date: 2026-08-14 00:00:00 +0900
 selected: true
-pub: "arXiv preprint arXiv:2609.01198"
+pub: "ACM International Conference on AI in Finance (ICAIF)"
+pub_post: ", Accepted."
 pub_date: "2026"
 cover: /assets/images/covers/FinLifeBench_figure.png
 abstract: >-
