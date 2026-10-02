@@ -4,6 +4,31 @@
     - Eunseo Kim
     - Doehyeon Lee
   venue: "NeurIPS 2026 Education Track (Accepted)"
+  description:
+    - >-
+      This educational resource combines a visual lecture and a hands-on
+      Janus-Pro-1B Colab lab to distinguish text-only, visual-only, and
+      interleaved reasoning and examine unified multimodal models along four
+      dimensions. Unified multimodal models combine text-and-vision
+      understanding and generation in one system. They matter for tasks such as
+      ball trajectories and robot manipulation, where visual information may
+      support reasoning. Interleaved reasoning goes further by using text and
+      images as intermediate steps within one connected process.
+    - >-
+      Representative models show an evolution: Show-o and Transfusion share
+      one visual representation; Janus-Pro and BAGEL specialize visual
+      pathways while sharing computation or context; SenseNova-U1 coordinates
+      specialized components through one visual interface; and ThinkMorph
+      fine-tunes BAGEL on interleaved text-image traces. This progression
+      clarifies what “unified” means and what supports visual-thinking claims.
+    - >-
+      To define what “unified” means and categorize multimodal models
+      consistently, we organize the comparison along four dimensions:
+      understanding and generation (supporting both), computation sharing
+      (shared core computation), shared visual context (a common visual
+      representation), and learning synergy (one capability improves the other
+      through training). The Unified Visual Reasoning Lab uses Janus-Pro-1B to
+      compare image understanding, spatial reasoning, and generation.
 
 - title: "AI Safety Lives in a Direction: Reading, Breaking, and Repairing Refusal in Multimodal Models"
   authors:
@@ -11,3 +36,8 @@
     - Yoo-Min Jung
     - Jaeyong Ko
   venue: "NeurIPS 2026 Education Track (Accepted)"
+  description:
+    - >-
+      AI safety is the field of research concerned with ensuring that AI
+      systems are used safely and do not cause harm. Safety-direction detection
+      is one method for identifying safety-related behavior.

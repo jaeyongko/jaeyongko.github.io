@@ -8,11 +8,14 @@
                             <h6>Educational Publications</h6>
                             <ul class="list-unstyled mb-1">
                                 {% for item in site.data.education_track %}
-                                <li class="media mb-1">
+                                <li class="media {% unless forloop.last %}mb-4{% else %}mb-1{% endunless %}">
                                     <div class="media-body">
                                         <div>{{ item.title }}</div>
                                         <div class="small">{% include widgets/author_list.html authors=item.authors %}</div>
                                         <div class="small"><i>{{ item.venue }}</i></div>
+                                        {% for paragraph in item.description %}
+                                        <p class="small text-muted mt-2 mb-0">{{ paragraph }}</p>
+                                        {% endfor %}
                                     </div>
                                 </li>
                                 {% endfor %}
