@@ -1,22 +1,24 @@
 - title: "Can a model think VISUALLY?"
+  cover: /assets/images/covers/educational-visual-reasoning.png
   authors:
     - Jaeyong Ko
     - Eunseo Kim
     - Doehyeon Lee
-  venue: "NeurIPS 2026 Education Track (Accepted)"
-  description:
-    - >-
-      A visual lecture and hands-on lab compare text-only, visual-only, and
-      interleaved reasoning across four dimensions of unified multimodal models.
+  pub: "NeurIPS 2026 Education Track"
+  pub_post: " (Accepted)"
+  abstract: >-
+    A visual lecture and hands-on lab compare text-only, visual-only, and
+    interleaved reasoning across four dimensions of unified multimodal models.
 
 - title: "AI Safety Lives in a Direction: Reading, Breaking, and Repairing Refusal in Multimodal Models"
+  cover: /assets/images/covers/educational-safety-direction.png
   authors:
     - Doehyeon Lee
     - Yoo-Min Jung
     - Jaeyong Ko
-  venue: "NeurIPS 2026 Education Track (Accepted)"
-  description:
-    - >-
-      An interactive lecture and lab explore a safety direction in
-      vision-language models by detecting, bypassing, and restoring refusal
-      with projection and activation addition.
+  pub: "NeurIPS 2026 Education Track"
+  pub_post: " (Accepted)"
+  abstract: >-
+    An interactive lecture and lab explore a safety direction in
+    vision-language models by detecting, bypassing, and restoring refusal
+    with projection and activation addition.
