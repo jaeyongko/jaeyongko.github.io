@@ -6,10 +6,8 @@
   venue: "NeurIPS 2026 Education Track (Accepted)"
   description:
     - >-
-      A visual lecture and hands-on lab explore text-only, visual-only, and
-      interleaved reasoning. The resource compares unified
-      multimodal models across understanding and generation, computation
-      sharing, shared visual context, and learning synergy.
+      A visual lecture and hands-on lab compare text-only, visual-only, and
+      interleaved reasoning across four dimensions of unified multimodal models.
 
 - title: "AI Safety Lives in a Direction: Reading, Breaking, and Repairing Refusal in Multimodal Models"
   authors:
@@ -19,7 +17,6 @@
   venue: "NeurIPS 2026 Education Track (Accepted)"
   description:
     - >-
-      An interactive lecture and hands-on lab investigate how AI safety lives
-      in a single direction. The resource equips learners to detect, bypass,
-      and restore refusal behaviors in a vision-language model using projection
-      and activation addition.
+      An interactive lecture and lab explore a safety direction in
+      vision-language models by detecting, bypassing, and restoring refusal
+      with projection and activation addition.
