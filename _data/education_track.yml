@@ -19,5 +19,7 @@
   venue: "NeurIPS 2026 Education Track (Accepted)"
   description:
     - >-
-      Developed an educational framework and hands-on lab for analyzing,
-      breaking, and repairing refusal behaviors in multimodal models.
+      An interactive lecture and hands-on lab investigate how AI safety lives
+      in a single direction. The resource equips learners to detect, bypass,
+      and restore refusal behaviors in a vision-language model using projection
+      and activation addition.
