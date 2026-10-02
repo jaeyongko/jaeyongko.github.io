@@ -64,6 +64,12 @@ h1, h2, h3, h4, h5, h6,
     flex: 0 0 26px;
 }
 
+.education-publication-item {
+    border-left: 3px solid #007bff;
+    border-radius: 0.25rem;
+    background-color: #f8f9fa;
+}
+
 .publication-link-logo {
     height: 18px;
     width: auto;
