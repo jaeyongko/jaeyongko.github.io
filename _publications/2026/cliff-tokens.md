@@ -18,4 +18,5 @@ links:
   Project Page: /cliff-token/
   arXiv: https://arxiv.org/abs/2606.25524
   GitHub: https://github.com/beaver-22/Cliff-token
+  Hugging Face: https://huggingface.co/datasets/Beaverdam/cliff-token-data
 ---
