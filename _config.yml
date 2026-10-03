@@ -36,6 +36,7 @@ exclude:
   - vendor/
   - .bundle/
   - cv/main.tex
+  - image_personal/
 
 timezone: Asia/Seoul
 
