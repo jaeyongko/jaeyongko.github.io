@@ -93,12 +93,12 @@ h1, h2, h3, h4, h5, h6,
 
 .publication-link-hf-logo {
     display: inline-block;
-    width: 26px;
-    height: 24px;
+    width: 22px;
+    height: 20px;
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-    font-size: 26px;
-    line-height: 24px;
-    vertical-align: -27%;
+    font-size: 22px;
+    line-height: 20px;
+    vertical-align: -20%;
 }
 
 .no-break {
