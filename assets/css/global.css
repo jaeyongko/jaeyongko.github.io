@@ -91,10 +91,14 @@ h1, h2, h3, h4, h5, h6,
     margin-left: 14px;
 }
 
-.abstract-links a[href^="https://huggingface.co/"]::before {
-    content: "🤗";
+.publication-link-hf-logo {
+    display: inline-block;
+    width: 20px;
+    height: 18px;
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-    margin-right: 3px;
+    font-size: 20px;
+    line-height: 18px;
+    vertical-align: -20%;
 }
 
 .no-break {
