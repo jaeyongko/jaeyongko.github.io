@@ -175,6 +175,9 @@ div.lazy {
 .personal-gallery,
 .personal-moments {
     display: flex;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     gap: 0.75rem;
     align-items: center;
     overflow-x: auto;
@@ -232,7 +235,7 @@ div.lazy {
 .personal-records {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.5rem;
     max-width: 520px;
 }
 
@@ -241,10 +244,8 @@ div.lazy {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: white;
-    border-radius: 0.8rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    padding: 0.4rem 0.25rem;
+    border-bottom: 1px solid #e2e6ea;
 }
 
 .personal-record small {
@@ -253,14 +254,19 @@ div.lazy {
 }
 
 .personal-record strong {
-    color: #264e60;
-    font-size: 1.5rem;
+    color: #343a40;
+    font-size: 1.2rem;
     font-variant-numeric: tabular-nums;
 }
 
 .personal-destinations {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
+}
+
+.personal-destination {
+    min-width: 0;
 }
 
 .personal-destination-title {
@@ -292,10 +298,6 @@ div.lazy {
 
 .personal-moment--portrait {
     width: min(65vw, 240px);
-}
-
-.personal-moment--tall {
-    width: min(50vw, 180px);
 }
 
 .personal-moment--landscape {
