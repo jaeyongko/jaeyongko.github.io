@@ -69,6 +69,10 @@ experience:
   - Reinforcement learning applications for goal-based wealth management.
 
 projects:
+- name: Development of Core Foundation Model and AI Agent Technology for Thermal-Process Manufacturing
+  position: Granted by Ministry of Trade, Industry and Energy
+  date: Sep. 2026 - Present
+  dept: Designed the backbone architecture for the thermal-process foundation model and established an integrated learning framework utilizing domain data and PINN.
 - name: "Duo 2.0: Evaluating LLM Reliability in Long Financial Conversations"
   logo: /assets/images/badges/kakaobank.png
   position: Granted by Kakaobank
