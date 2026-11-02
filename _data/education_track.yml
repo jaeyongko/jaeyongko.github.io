@@ -1,4 +1,5 @@
 - title: "Can a model think VISUALLY?"
+  title_url: https://neurips.cc/virtual/2026/loc/sydney/177856
   cover: /assets/images/covers/educational-visual-reasoning.png
   authors:
     - Jaeyong Ko
@@ -11,6 +12,7 @@
     interleaved reasoning across four dimensions of unified multimodal models.
 
 - title: "AI Safety Lives in a Direction: Reading, Breaking, and Repairing Refusal in Multimodal Models"
+  title_url: https://neurips.cc/virtual/2026/loc/sydney/177854
   cover: /assets/images/covers/educational-safety-direction.png
   authors:
     - Doehyeon Lee
