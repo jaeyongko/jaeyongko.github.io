@@ -112,10 +112,22 @@ teaching:
   date: Sep. 2023 - Dec. 2023
 
 awards:
-- name: Excellence Award (Poster Presentation)
+- name: Master’s Student Research Grant (1 year)
+  organization: National Research Foundation of Korea — Project: Cliff Tokens: Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning
+  date: 2026
+- name: Outstanding Paper Award
   logo: /assets/images/badges/KDMS.png
-  organization: 2026 KDMS Summer Conference, Korea Data Mining Society
-  date: Aug. 2026
+  organization: Poster Presentation, 2026 KDMS Summer Conference
+  date: 2026
+- name: 15th Lee Junhan Award (USD 2,200)
+  organization: Undergraduate Academic Category
+  date: 2023
+- name: 3rd Place, Startup Idea Competition
+  organization: College of Engineering and College of Business, SNU
+  date: 2019
+- name: 3rd Place, IE Idea Competition
+  organization: Korean Institute of Industrial Engineers
+  date: 2019
 
 skills:
 - name: Programming and Software

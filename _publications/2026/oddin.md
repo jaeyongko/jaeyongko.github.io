@@ -12,4 +12,6 @@ authors:
   - Jaeyong Ko*
   - Hankyeol Kim*
   - Pilsung Kang
+links:
+  arXiv: https://arxiv.org/abs/2610.33062
 ---
