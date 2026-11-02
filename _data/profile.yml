@@ -113,6 +113,7 @@ teaching:
 
 awards:
 - name: Master’s Student Research Grant (1 year)
+  logo: /assets/images/badges/NRF.png
   organization: "National Research Foundation of Korea — Project: Cliff Tokens: Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning"
   date: 2026
 - name: Outstanding Paper Award
