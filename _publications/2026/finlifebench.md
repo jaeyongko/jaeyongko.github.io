@@ -8,8 +8,8 @@ abstract: >-
   A benchmark for exhaustive life-event history extraction and financial-state
   reconstruction from longitudinal banking dialogues.
 authors:
-  - Hangyeul Lee
-  - Juyoung Oh
+  - Hangyeul Lee*
+  - Juyoung Oh*
   - Jaeyong Ko
   - Sunmin Kim
   - Jaeik Park
