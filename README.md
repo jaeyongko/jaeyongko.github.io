@@ -25,7 +25,7 @@ _data/authors.yml       Publication author metadata
 _news/                  News items
 _publications/          Publication entries
 assets/images/          Profile photo, logos, and publication figures
-cv/CV_jaeyongko.pdf     Downloadable CV
+cv/CV_jaeyongko_public.pdf Downloadable CV
 ```
 
 ## Local Preview
